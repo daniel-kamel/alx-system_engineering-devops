@@ -9,3 +9,6 @@
 4-listmorefiles is a bash script that displays current directory contents, including hidden files (starting with .) in long format.
 
 5-listfilesdigitonly is a bash script that displays the current directory contents including hidden files in long format with numeric user id and group id.
+
+6-firstdirectory is a bash script that creates a directory called my_first_directory in /tmp/.
+
