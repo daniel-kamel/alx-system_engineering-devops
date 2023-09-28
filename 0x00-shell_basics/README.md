@@ -5,3 +5,5 @@
 2-bring_me_home is a bash script that changes the working directory to the user’s home directory.
 
 3-listfiles is a bash script that displays current directory contents in a long format.
+
+4-listmorefiles is a bash script that displays current directory contents, including hidden files (starting with .) in long format.
