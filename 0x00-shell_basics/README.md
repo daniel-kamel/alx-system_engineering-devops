@@ -25,3 +25,5 @@
 12-file_type is a bash script that prints the file type of a file names iamafile located in the /tmp directory.
 
 13-symbolic_link is a bash script that creates a symbolic link called "__ls__" linking to /bin/ls.
+
+14-copy_html is a bash script that copies all the HTML files from the current working directory to the parent of the working directory, but only copy files that did not exist in the parent of the working directory or were newer than the versions in the parent of the working directory.
