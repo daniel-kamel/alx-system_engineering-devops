@@ -12,3 +12,4 @@
 
 6-firstdirectory is a bash script that creates a directory called my_first_directory in /tmp/.
 
+7-movethatfile is a bash script that moves the file "betty" from /tmp/ to /tmp/my_first_directory.
