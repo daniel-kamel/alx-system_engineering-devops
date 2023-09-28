@@ -20,3 +20,5 @@ The following are bash scripts created for the 0x01-shell_permissions project in
 Owner: no permission at all
 Group: no permission at all
 Other users: all the permissions
+
+9-John_Doe sets the mode of the file hello to -rwxr-x-wx
