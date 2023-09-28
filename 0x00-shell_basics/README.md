@@ -15,3 +15,5 @@
 7-movethatfile is a bash script that moves the file "betty" from /tmp/ to /tmp/my_first_directory.
 
 8-firstdelete is a bash script that deletes the file "betty" from /tmp/my_first_directory.
+
+9-firstdirdeletion is a bash script that deletes the directory /my_first_directory from /tmp/.
