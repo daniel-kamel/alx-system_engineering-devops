@@ -21,3 +21,5 @@
 10-back is a bash script that changes the working directory to the previous one.
 
 11-lists is a bash script that lists all the files (including hidden files) in the current working directory, the parent of the current directory and the /boot directory in long format.
+
+12-file_type is a bash script that prints the file type of a file names iamafile located in the /tmp directory.
