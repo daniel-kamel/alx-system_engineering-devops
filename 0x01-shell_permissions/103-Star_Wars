@@ -1,0 +1,4 @@
+#!/bin/bash
+# This script will play Star Wars IV episode in ASCII art in the terminal
+telnet towel.blinkenlights.nl
+
