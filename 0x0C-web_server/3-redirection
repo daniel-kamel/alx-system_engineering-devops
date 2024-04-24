@@ -13,7 +13,7 @@ sudo ufw allow 'Nginx HTTP'
 sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
 
 # Configure redirection
-sudo sed -i 's/server_name daniel-kamel.tech;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo sed -i '47i\    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
 # Restart nginx
 echo "Restarting nginx..."
