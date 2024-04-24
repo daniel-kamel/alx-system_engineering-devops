@@ -9,6 +9,9 @@ sudo apt-get -y install nginx
 # Allow nginx through firewall
 sudo ufw allow 'Nginx HTTP'
 
+# Start nginx service
+sudo service nginx start
+
 # Making nginx serve "Hello World!" at its root
 sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
 
