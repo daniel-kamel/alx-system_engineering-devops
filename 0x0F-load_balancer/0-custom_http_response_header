@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Configure web-02 to be identical to web-01 and add
+# 'X-Served-By' custom HTTP response header.
+
+# Install nginx
+echo "Installing nginx..."
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# Allow nginx through firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Start nginx service
+sudo service nginx start
+
+# Making nginx serve "Hello World!" at its root
+sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
+
+# Configure redirection
+sudo sed -i '47i\    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# Configure 404 page
+sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html
+sudo sed -i '48i\    error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+
+# Add 'X-Served-By' custom HTTP response header
+sudo sed -i '49i\    add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
+
+# Restart nginx
+echo "Restarting nginx..."
+sudo service nginx restart
+
+echo -e "Done!\n"
