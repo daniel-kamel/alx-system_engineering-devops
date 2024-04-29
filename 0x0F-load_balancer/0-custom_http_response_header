@@ -17,14 +17,25 @@ sudo service nginx start
 sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
 
 # Configure redirection
-sudo sed -i '47i\    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-
+redirect_line="$(printf '\t')""rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+if ! grep -Fxq "$redirect_line" /etc/nginx/sites-available/default
+then
+sudo sed -i "47i$redirect_line" /etc/nginx/sites-available/default
+fi
 # Configure 404 page
 sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/error_404.html
-sudo sed -i '48i\    error_page 404 /error_404.html;' /etc/nginx/sites-available/default
+not_found_line="$(printf '\t')""error_page 404 /error_404.html;"
+if ! grep -Fxq "$not_found_line" /etc/nginx/sites-available/default
+then
+sudo sed -i "48i$not_found_line" /etc/nginx/sites-available/default
+fi
 
 # Add 'X-Served-By' custom HTTP response header
-sudo sed -i '49i\    add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
+custom_header="$(printf '\t')"'add_header X-Served-By $HOSTNAME;'
+if ! grep -Fxq "$custom_header" /etc/nginx/sites-available/default
+then
+sudo sed -i "49i$custom_header" /etc/nginx/sites-available/default
+fi
 
 # Restart nginx
 echo "Restarting nginx..."
