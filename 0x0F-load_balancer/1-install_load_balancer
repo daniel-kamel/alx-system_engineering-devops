@@ -7,18 +7,24 @@ sudo apt-get install --no-install-recommends software-properties-common -y
 sudo add-apt-repository ppa:vbernat/haproxy-2.0 -y
 sudo apt-get install haproxy=2.0.\* -y
 
+# Enable HAproxy
+echo "ENABLED=1" | sudo tee /etc/default/haproxy
+
 # Configure HAproxy
 sudo chown "$USER":"$USER" /etc/haproxy/haproxy.cfg
-echo "
+printf %s "\
+defaults
+  mode http
+
 frontend http_front
   bind *:80
-  mode http
   default_backend http_back
+
 backend http_back
   balance roundrobin
   server 530987-web-01 35.174.204.185:80 check
   server 530987-web-02 54.237.8.132:80 check
-" >> /etc/haproxy/haproxy.cfg
+" > /etc/haproxy/haproxy.cfg
 
 # Restart HAproxy
-sudo service haproxy restart
+sudo service haproxy start
