@@ -9,7 +9,7 @@ package { 'nginx':
 
 exec { 'insert line':
 
-  command => '/usr/bin/sed -i "65i\add_header X-Served-By ${hostname} always;" /etc/nginx/sites-available/default',
+  command => '/usr/bin/sed -i "49i\add_header X-Served-By $HOSTNAME check;" /etc/nginx/sites-available/default',
 
 }
 
