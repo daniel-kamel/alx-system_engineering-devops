@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Displays information about subdomains.
+
+display_information ()
+{
+  all_info=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -n 1)
+  RECORD_TYPE=$(echo "$all_info" | awk '{print $4}')
+  DESTINATION=$(echo "$all_info" | awk '{print $5}')
+  echo "The subdomain $2 is a $RECORD_TYPE record and points to $DESTINATION"
+}
+
+if [ "$#" -eq 1 ]
+then
+  display_information "$1" "www"
+  display_information "$1" "lb-01"
+  display_information "$1" "web-01"
+  display_information "$1" "web-02"
+elif [ "$#" -eq 2 ]
+then
+  display_information "$1" "$2"
+fi
