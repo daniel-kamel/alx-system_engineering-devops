@@ -2,4 +2,4 @@
 # Fix Nginx server error by installing it
 sudo apt update
 sudo apt -y install nginx
-sudo service ngix start
+sudo service ngix restart
