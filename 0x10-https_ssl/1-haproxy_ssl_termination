@@ -1,0 +1,13 @@
+defaults
+  mode http
+
+frontend http_front
+  bind *:80
+  bind *:443 ssl crt /etc/haproxy/certs/www.daniel-kamel.tech.pem
+  redirect scheme https code 301 if !{ ssl_fc }
+  default_backend http_back
+
+backend http_back
+  balance roundrobin
+  server 530987-web-01 35.174.204.185:80 check
+  server 530987-web-02 54.237.8.132:80 check
