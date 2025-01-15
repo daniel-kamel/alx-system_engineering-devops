@@ -21,6 +21,7 @@ sudo sed -i '36i\\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube
 # Configure 404 page
 sudo bash -c echo "Ceci n'est pas une page > /var/www/html/error_404.html"
 sudo sed -i '40i\\n\terror_page 404 /error_404.html;' /etc/nginx/sites-available/default
+sudo sed -i '42i\\n\tlocation /error_404.html {\n\t\tinternal;\n\t\tadd_header X-Error-Message "Ceci n'\''est pas une page";\n\t\t}' /etc/nginx/sites-available/default
 
 # Restart nginx
 echo "Restarting nginx..."
