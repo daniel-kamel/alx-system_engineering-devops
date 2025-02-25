@@ -1,3 +1,4 @@
 0x13-firewall/configure-firewall.sh
 0x14-mysql/configure-mysql.sh
 */test_main.py
+*/__pycache__
